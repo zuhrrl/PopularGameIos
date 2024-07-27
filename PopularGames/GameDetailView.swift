@@ -9,6 +9,15 @@ import SwiftUI
 
 struct GameDetailView: View {
     var game: Game
+    private var dbManager: DBManager = DBManager()
+    var popularGameViewModel: GameViewModel
+    
+    init(game: Game, popularGameViewModel: GameViewModel) {
+        self.game = game
+        self.popularGameViewModel = popularGameViewModel
+    }
+
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -20,12 +29,44 @@ struct GameDetailView: View {
                     }
                     .frame(height: 200.0)
                     .clipShape(.rect(cornerRadius: 15))
-                    Text("Created At: \(game.releasedDate)")
-                        .foregroundColor(Color(uiColor: .text))
+                    HStack {
+                        Text("Created At: \(game.releasedDate)")
+                            .foregroundColor(Color(uiColor: .text))
 
-                        .font(.system(size: 20))
-                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-                    
+                            .font(.system(size: 20))
+                            .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                        Spacer()
+                        Image(systemName: game.isFavorite! ? "heart.fill" :  "heart")
+                            .resizable()
+                            .frame(width: 25.0, height: 25.0)
+                            .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 0.0, trailing: 20.0)
+                            )
+                            .foregroundColor(.white)
+                            .onTapGesture {
+                                var saved = dbManager.getFavoriteGameById(id: game.id)
+                                //
+                                if saved == nil {
+                                    debugPrint("success add to favorite")
+                                    dbManager.addToFavorite(game: game)
+                                    popularGameViewModel.updateFavorite(item: game, status: true)
+                                    return;
+                                }
+                                //
+                                
+                                if (saved!.isFavorite!) {
+                                    dbManager.updateGame(game: game, status: false)
+                                    popularGameViewModel.updateFavorite(item: game, status: false)
+                                    return
+                                }
+                                
+                                if (saved!.isFavorite == false) {
+                                    dbManager.updateGame(game: game, status: true)
+                                    popularGameViewModel.updateFavorite(item: game, status: true)
+                                    return
+                                }
+                            }
+                        
+                    }
                     Text("\(game.title)")
                         .foregroundColor(Color(uiColor: .text))
 

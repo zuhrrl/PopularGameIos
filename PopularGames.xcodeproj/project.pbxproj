@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A84A1C52C53F2F5001751EF /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A84A1C42C53F2F5001751EF /* GameViewModel.swift */; };
+		3A84A1C72C552EE7001751EF /* FavoriteGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A84A1C62C552EE7001751EF /* FavoriteGameView.swift */; };
+		3A84A1C92C552F5A001751EF /* ItemFavoriteGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A84A1C82C552F5A001751EF /* ItemFavoriteGame.swift */; };
+		3AB90A6D2C537BB200FDA21C /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB90A6C2C537BB200FDA21C /* DbManager.swift */; };
 		3AFA619F2C4CD79D00F6D84C /* PopularGamesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA619E2C4CD79D00F6D84C /* PopularGamesApp.swift */; };
 		3AFA61A12C4CD79D00F6D84C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA61A02C4CD79D00F6D84C /* ContentView.swift */; };
 		3AFA61A32C4CD79E00F6D84C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA61A22C4CD79E00F6D84C /* Assets.xcassets */; };
@@ -41,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A84A1C42C53F2F5001751EF /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		3A84A1C62C552EE7001751EF /* FavoriteGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteGameView.swift; sourceTree = "<group>"; };
+		3A84A1C82C552F5A001751EF /* ItemFavoriteGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFavoriteGame.swift; sourceTree = "<group>"; };
+		3AB90A6C2C537BB200FDA21C /* DbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
 		3AFA619B2C4CD79D00F6D84C /* PopularGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopularGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFA619E2C4CD79D00F6D84C /* PopularGamesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularGamesApp.swift; sourceTree = "<group>"; };
 		3AFA61A02C4CD79D00F6D84C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -119,6 +127,10 @@
 				3AFA61D02C4D585600F6D84C /* Utils.swift */,
 				3AFA61D22C4D5CEC00F6D84C /* ProfileView.swift */,
 				3AFA61D42C4D5F4C00F6D84C /* GameDetailView.swift */,
+				3AB90A6C2C537BB200FDA21C /* DbManager.swift */,
+				3A84A1C42C53F2F5001751EF /* GameViewModel.swift */,
+				3A84A1C62C552EE7001751EF /* FavoriteGameView.swift */,
+				3A84A1C82C552F5A001751EF /* ItemFavoriteGame.swift */,
 			);
 			path = PopularGames;
 			sourceTree = "<group>";
@@ -279,13 +291,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AFA61D32C4D5CEC00F6D84C /* ProfileView.swift in Sources */,
+				3A84A1C92C552F5A001751EF /* ItemFavoriteGame.swift in Sources */,
 				3AFA61CD2C4CF55E00F6D84C /* NetworkService.swift in Sources */,
 				3AFA61A12C4CD79D00F6D84C /* ContentView.swift in Sources */,
+				3A84A1C52C53F2F5001751EF /* GameViewModel.swift in Sources */,
 				3AFA619F2C4CD79D00F6D84C /* PopularGamesApp.swift in Sources */,
 				3AFA61D12C4D585600F6D84C /* Utils.swift in Sources */,
+				3AB90A6D2C537BB200FDA21C /* DbManager.swift in Sources */,
 				3AFA61CB2C4CF48500F6D84C /* ResponseListGame.swift in Sources */,
 				3AFA61D52C4D5F4C00F6D84C /* GameDetailView.swift in Sources */,
 				3AFA61C92C4CDF1D00F6D84C /* ItemCardGame.swift in Sources */,
+				3A84A1C72C552EE7001751EF /* FavoriteGameView.swift in Sources */,
 				3AFA61CF2C4D3EBE00F6D84C /* GameModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

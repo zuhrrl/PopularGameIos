@@ -15,6 +15,7 @@ class Game {
     let description: String
     let imageUrl: String
     let releasedDate: String
+    var isFavorite: Bool? = nil
     
     init(
         id: Int,
@@ -23,7 +24,8 @@ class Game {
         rating: Double,
         description: String,
         imageUrl: String,
-        releasedDate: String
+        releasedDate: String,
+        isFavorite: Bool?
     ) {
         self.id = id
         self.title = title
@@ -32,5 +34,6 @@ class Game {
         self.description = description
         self.imageUrl = imageUrl
         self.releasedDate = releasedDate
+        self.isFavorite = isFavorite
     }
 }

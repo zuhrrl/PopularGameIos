@@ -7,7 +7,8 @@
 
 import Foundation
 class NetworkService {
-    
+    private var dbManager: DBManager = DBManager()
+
     func getPopularGames() async throws -> [Game] {
         let components = URLComponents(string: "https://rawg-mirror.vercel.app/api/games")!
         let request = URLRequest(url: components.url!)
@@ -27,6 +28,7 @@ class NetworkService {
 }
 
 extension NetworkService {
+    
     fileprivate func gameMapper(
         input listGame: [ItemGame]
     ) -> [Game] {
@@ -40,6 +42,14 @@ extension NetworkService {
                 }
                 genres.append(",\(genre.name)")
             }
+            
+            var isFavorite = false;
+            var saved = dbManager.getFavoriteGameById(id: result.id)
+            
+            if saved != nil && saved!.isFavorite! {
+               isFavorite = true
+            }
+            
             return Game(
                 id: result.id,
                 title: result.name,
@@ -47,7 +57,9 @@ extension NetworkService {
                 rating: result.rating,
                 description:  result.descriptionRaw,
                 imageUrl:  result.backgroundImage,
-                releasedDate: result.released
+                releasedDate: result.released,
+                isFavorite: isFavorite
+                
             )
         }
     }

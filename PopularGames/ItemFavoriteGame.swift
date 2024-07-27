@@ -1,13 +1,13 @@
 //
-//  ItemCardGame.swift
+//  ItemFavoriteGame.swift
 //  PopularGames
 //
-//  Created by WDT on 21/07/24.
+//  Created by WDT on 27/07/24.
 //
 
 import SwiftUI
 
-struct ItemCardGame: View {
+struct ItemFavoriteGame: View {
     var game: Game
     var isFavorite: Bool = false
     var onTap: () -> Void
@@ -50,7 +50,7 @@ struct ItemCardGame: View {
                 }
             )
             Spacer()
-            Image(systemName: isFavorite ? "heart.fill" :  "heart")
+            Image(systemName: "minus.circle")
                 .resizable()
                 .frame(width: 25.0, height: 25.0)
                 .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 0.0, trailing: 20.0)
