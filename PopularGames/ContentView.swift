@@ -119,7 +119,6 @@ struct ContentView: View {
                 })
         }).onAppear(perform: {
             Task {
-                dbManager.dropTable()
                 await fetchPopularGame()
             }
         }).task {
