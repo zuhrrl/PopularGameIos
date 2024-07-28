@@ -29,7 +29,7 @@ struct ContentView: View {
                 
                 List(gameViewModel.listGame, id: \.id) {  item in
                     ItemCardGame(game: item, isFavorite: item.isFavorite ?? false, onTap: {
-                        
+                        gameViewModel.setGame(game: item)
                         var saved = dbManager.getFavoriteGameById(id: item.id)
                         //
                         if saved == nil {
@@ -60,7 +60,7 @@ struct ContentView: View {
                         self.selectedGame = item.id
                     }
                     .overlay {
-                        NavigationLink(destination: GameDetailView(game: item, popularGameViewModel: gameViewModel), tag: item.id, selection: $selectedGame) {
+                        NavigationLink(destination: GameDetailView(game: item, popularGameViewModel: gameViewModel, db: dbManager), tag: item.id, selection: $selectedGame) {
                             EmptyView().frame(height: 0)
                         }.opacity(0)
                     }
@@ -77,7 +77,7 @@ struct ContentView: View {
                 leading: Button {
                     print("Favorite")
                 } label: {
-                    NavigationLink(destination: FavoriteGameView(popularGameViewModel: gameViewModel), isActive: self.$goToFavorite) {
+                    NavigationLink(destination: FavoriteGameView(popularGameViewModel: gameViewModel, db: dbManager), isActive: self.$goToFavorite) {
                         
                     }
                     HStack {
@@ -119,6 +119,7 @@ struct ContentView: View {
                 })
         }).onAppear(perform: {
             Task {
+                dbManager.dropTable()
                 await fetchPopularGame()
             }
         }).task {

@@ -12,9 +12,9 @@ struct FavoriteGameView: View {
     @State var selectedGame: Int? = nil
     @StateObject var gameViewModel = GameViewModel()
     var popularGameViewModel: GameViewModel
-    private var dbManager: DBManager = DBManager()
-    
-    init(popularGameViewModel: GameViewModel) {
+    private var dbManager: DBManager
+    init(popularGameViewModel: GameViewModel, db: DBManager) {
+        self.dbManager = db
         self.popularGameViewModel = popularGameViewModel
     }
     
@@ -49,7 +49,7 @@ struct FavoriteGameView: View {
                     self.selectedGame = item.id
                 }
                 .overlay {
-                    NavigationLink(destination: GameDetailView(game: item, popularGameViewModel: popularGameViewModel), tag: item.id, selection: $selectedGame) {
+                    NavigationLink(destination: GameDetailView(game: item, popularGameViewModel: popularGameViewModel, db: dbManager), tag: item.id, selection: $selectedGame) {
                         EmptyView().frame(height: 0)
                     }.opacity(0)
                 }

@@ -9,6 +9,18 @@ import Foundation
 
 class GameViewModel: ObservableObject {
     @Published var listGame: [Game] = []
+    @Published var game: Game?
+    
+    func setGame(game: Game) {
+        self.game = game
+        notify()
+    }
+
+
+    func updateGame(game: Game, status: Bool) {
+        game.isFavorite = status
+        notify()
+    }
     
     func updateFavorite(item: Game, status: Bool) {
         var index = listGame.firstIndex(where: {$0.id == item.id})

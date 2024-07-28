@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct GameDetailView: View {
-    var game: Game
-    private var dbManager: DBManager = DBManager()
+    @State var game: Game
+    private var dbManager: DBManager
     var popularGameViewModel: GameViewModel
+    @State var isFavorite : Bool
     
-    init(game: Game, popularGameViewModel: GameViewModel) {
+    init(game: Game, popularGameViewModel: GameViewModel, db: DBManager) {
+        self.dbManager = db
         self.game = game
         self.popularGameViewModel = popularGameViewModel
+        self.isFavorite = game.isFavorite!
     }
 
 
@@ -36,7 +39,7 @@ struct GameDetailView: View {
                             .font(.system(size: 20))
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                         Spacer()
-                        Image(systemName: game.isFavorite! ? "heart.fill" :  "heart")
+                        Image(systemName: isFavorite ? "heart.fill" :  "heart")
                             .resizable()
                             .frame(width: 25.0, height: 25.0)
                             .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 0.0, trailing: 20.0)
@@ -49,19 +52,24 @@ struct GameDetailView: View {
                                     debugPrint("success add to favorite")
                                     dbManager.addToFavorite(game: game)
                                     popularGameViewModel.updateFavorite(item: game, status: true)
+                                    isFavorite = true
                                     return;
                                 }
                                 //
                                 
                                 if (saved!.isFavorite!) {
                                     dbManager.updateGame(game: game, status: false)
+                                    dbManager.deleteFavoriteGame(game: game)
                                     popularGameViewModel.updateFavorite(item: game, status: false)
+                                    isFavorite = false
+                                    
                                     return
                                 }
                                 
                                 if (saved!.isFavorite == false) {
                                     dbManager.updateGame(game: game, status: true)
                                     popularGameViewModel.updateFavorite(item: game, status: true)
+                                    isFavorite = true
                                     return
                                 }
                             }
