@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var goToProfile: Bool = false
     @State private var goToFavorite: Bool = false
     @State var selectedGame: Int? = nil
+    @StateObject var favoriteGameViewModel = GameViewModel()
     @StateObject var gameViewModel = GameViewModel()
     private var dbManager: DBManager = DBManager()
     
@@ -36,13 +37,16 @@ struct ContentView: View {
                             debugPrint("success add to favorite")
                             dbManager.addToFavorite(game: item)
                             gameViewModel.updateFavorite(item: item, status: true)
+                            favoriteGameViewModel.refreshFavorite(db: self.dbManager)
                             return;
                         }
                         //
                         
                         if (saved!.isFavorite!) {
-                            dbManager.updateGame(game: item, status: false)
+                            
                             gameViewModel.updateFavorite(item: item, status: false)
+                            
+                            dbManager.deleteFavoriteGame(game: item)
                             return
                         }
                         
@@ -77,7 +81,7 @@ struct ContentView: View {
                 leading: Button {
                     print("Favorite")
                 } label: {
-                    NavigationLink(destination: FavoriteGameView(popularGameViewModel: gameViewModel, db: dbManager), isActive: self.$goToFavorite) {
+                    NavigationLink(destination: FavoriteGameView(popularGameViewModel: gameViewModel, db: dbManager ), isActive: self.$goToFavorite) {
                         
                     }
                     HStack {
@@ -120,6 +124,7 @@ struct ContentView: View {
         }).onAppear(perform: {
             Task {
                 await fetchPopularGame()
+                
             }
         }).task {
         }
@@ -135,6 +140,8 @@ struct ContentView: View {
             fatalError("Error: connection failed.")
         }
     }
+    
+    
     
 }
 

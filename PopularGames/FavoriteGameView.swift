@@ -62,9 +62,11 @@ struct FavoriteGameView: View {
         .background {
             Color.init(uiColor: .primary)                           .ignoresSafeArea()
         }
-        .task {
-            await fetchFavoriteGame()
-        }
+        .onAppear(perform: {
+            Task{
+                await fetchFavoriteGame()
+                
+            }        })
         
     }
     

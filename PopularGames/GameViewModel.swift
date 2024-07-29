@@ -11,6 +11,10 @@ class GameViewModel: ObservableObject {
     @Published var listGame: [Game] = []
     @Published var game: Game?
     
+    func refreshFavorite(db: DBManager) {
+        listGame = db.getAllFavoriteGame()
+    }
+    
     func setGame(game: Game) {
         self.game = game
         notify()

@@ -79,11 +79,18 @@ struct GameDetailView: View {
                         .foregroundColor(Color(uiColor: .text))
 
                         .font(.title)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+                    
+                    
+                    Text("Genres: \(game.genres)")
+                        .foregroundColor(Color(uiColor: .text))
+                        .font(.system(size: 15))
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+
+
                     
                     Text("\(game.description)")
                         .foregroundColor(Color(uiColor: .text))
-
                         .font(.system(size: 20))
                     
                     Text("Rating: \(String(format: "%.2f", game.rating))")
