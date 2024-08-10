@@ -1,0 +1,46 @@
+# Xcode
+.DS_Store
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+*.xcuserstate
+
+# Swift Package Manager
+.build/
+Package.resolved
+
+# Cocoapods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+
+# Build artifacts
+DerivedData/
+build/
+
+# Swift Package Manager Build
+.swiftpm/xcode/package.pins
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/*.lock
+
+# Xcode iOS specific
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Others
+*.moved-aside
+*.swp
+*.lock
+*~
