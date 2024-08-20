@@ -10,6 +10,7 @@
 		3A036A722C63939300BB9AF8 /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A036A712C63939300BB9AF8 /* RemoteDataSource.swift */; };
 		3A036A762C6394A300BB9AF8 /* GameRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A036A752C6394A300BB9AF8 /* GameRepositoryImpl.swift */; };
 		3A036A792C63962600BB9AF8 /* GameRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A036A782C63962600BB9AF8 /* GameRepositoryProtocol.swift */; };
+		3A33C9372C74335E00AD7240 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 3A33C9362C74335E00AD7240 /* Core */; };
 		3A4F1E582C664F4C00C08982 /* GameDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F1E572C664F4C00C08982 /* GameDetailPresenter.swift */; };
 		3A4F1E5A2C66519700C08982 /* GameDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F1E592C66519700C08982 /* GameDetailInteractor.swift */; };
 		3A4F1E5F2C66624C00C08982 /* FavoriteGamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F1E5E2C66624C00C08982 /* FavoriteGamePresenter.swift */; };
@@ -122,6 +123,7 @@
 			files = (
 				3AC7F2002C6D25CA00238F7C /* RealmSwift in Frameworks */,
 				3AC7F1FE2C6D25B300238F7C /* Alamofire in Frameworks */,
+				3A33C9372C74335E00AD7240 /* Core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +510,7 @@
 			packageProductDependencies = (
 				3AC7F1FD2C6D25B300238F7C /* Alamofire */,
 				3AC7F1FF2C6D25CA00238F7C /* RealmSwift */,
+				3A33C9362C74335E00AD7240 /* Core */,
 			);
 			productName = PopularGames;
 			productReference = 3AFA619B2C4CD79D00F6D84C /* PopularGames.app */;
@@ -584,6 +587,7 @@
 			packageReferences = (
 				3A2FDC772C6D1F6E00C2C1A3 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				3A2FDC782C6D20D900C2C1A3 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				3A33C9352C74335E00AD7240 /* XCRemoteSwiftPackageReference "Core" */,
 			);
 			productRefGroup = 3AFA619C2C4CD79D00F6D84C /* Products */;
 			projectDirPath = "";
@@ -1002,9 +1006,22 @@
 				kind = branch;
 			};
 		};
+		3A33C9352C74335E00AD7240 /* XCRemoteSwiftPackageReference "Core" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zuhrrl/Core.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3A33C9362C74335E00AD7240 /* Core */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A33C9352C74335E00AD7240 /* XCRemoteSwiftPackageReference "Core" */;
+			productName = Core;
+		};
 		3AC7F1FD2C6D25B300238F7C /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3A2FDC772C6D1F6E00C2C1A3 /* XCRemoteSwiftPackageReference "Alamofire" */;
